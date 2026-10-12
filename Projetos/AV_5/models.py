@@ -1,7 +1,9 @@
+import os
+from decimal import Decimal
+from typing import List, Optional
+
 from sqlalchemy import String, Text, Integer, Boolean, Numeric, ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from typing import List, Optional
-import os
 
 # classe "base"
 class Base(DeclarativeBase):
@@ -26,13 +28,6 @@ class Jogo(Base):
     nome: Mapped[str] = mapped_column(String(250))
     desenvolvedora: Mapped[str] = mapped_column(String(250))
     ano_lancamento: Mapped[int] = mapped_column(Integer)
-    preco: Mapped[float] = mapped_column(Numeric(10, 2))
+    preco: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     genero_id: Mapped[int] = mapped_column(ForeignKey("tabela_genero.id"))
     genero: Mapped[Genero] = relationship(back_populates="jogos")
-   
-
-    
-
-
-
-
