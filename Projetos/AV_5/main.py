@@ -135,6 +135,8 @@ def menu():
                         print("Genero excluido.")
 
                 elif tipo == "2":
+                    for j in session.scalars(select(Jogo)):
+                        print(j.id, j.nome, j.desenvolvedora, j.ano_lancamento, j.preco, j.genero.nome)
                     j = session.get(Jogo, int(input("ID do jogo: ")))
                     if j is None:
                         print("Jogo nao encontrado.")
